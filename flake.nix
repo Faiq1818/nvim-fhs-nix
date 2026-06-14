@@ -13,12 +13,14 @@
       };
 
       neovim-fhs = pkgs.buildFHSEnv {
-        name = "nvim-fhs";
+        # Change this name if you want to use a different name or multiple Neovim executable names
+        name = "nvim";
 
         targetPkgs =
           pkgs: with pkgs; [
             neovim
 
+            # Add the plugin dependencies here
             # Mason dependencies
             git
             curl
@@ -26,14 +28,13 @@
             gnutar
             gzip
 
-            # Mason sometimes use this package managers, you can remove it if you don't want it
+            # Mason sometimes uses these package managers, you can remove them if you don't want them
             gcc
             cargo
 
             ripgrep
             gnumake
             fd
-
             glibc
             stdenv.cc.cc.lib
           ];
